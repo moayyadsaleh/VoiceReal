@@ -20,12 +20,51 @@ const languages = [
   },
   {
     name: "Spanish",
-    voices: [
-      "Spanish Spain Male",
-      "Spanish Spain Female",
-      "Spanish Latin American Male",
-      "Spanish Latin American Female",
-    ],
+    voices: ["es-ES male", "es-ES female", "es-US male", "es-US female"],
+  },
+  {
+    name: "French",
+    voices: ["French Male", "French Female"],
+  },
+  {
+    name: "German",
+    voices: ["German Male", "German Female"],
+  },
+  {
+    name: "Italian",
+    voices: ["Italian Male", "Italian Female"],
+  },
+  {
+    name: "Chinese",
+    voices: ["Mandarin Male", "Mandarin Female"],
+  },
+  {
+    name: "Japanese",
+    voices: ["Japanese Male", "Japanese Female"],
+  },
+  {
+    name: "Russian",
+    voices: ["Russian Male", "Russian Female"],
+  },
+  {
+    name: "Arabic",
+    voices: ["Arabic Male", "Arabic Female"],
+  },
+  {
+    name: "Portuguese",
+    voices: ["Portuguese Male", "Portuguese Female"],
+  },
+  {
+    name: "Dutch",
+    voices: ["Dutch Male", "Dutch Female"],
+  },
+  {
+    name: "Swedish",
+    voices: ["Swedish Male", "Swedish Female"],
+  },
+  {
+    name: "Korean",
+    voices: ["Korean Male", "Korean Female"],
   },
   // Add more languages as needed
 ];
