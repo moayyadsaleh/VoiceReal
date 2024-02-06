@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoiceReal: Text-to-Speech Reader</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      #ttsContainer {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      #textArea {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+      }
+
+      /* Add more styling as needed */
+
+      #playBtn,
+      #pauseBtn,
+      #repeatBtn {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ttsContainer">
+      <p>
+        Welcome to VoiceReal, your advanced Text-to-Speech Reader. Enter text
+        into the provided textarea, select your preferred language and pitch,
+        then hit play to experience the magic. VoiceReal seamlessly transforms
+        written content into a natural, human-like voice, enhancing
+        accessibility and convenience. Explore the power of words brought to
+        life with VoiceReal.
+      </p>
+
+      <textarea id="textArea" placeholder="Enter text to be read..."></textarea
+      ><br />
+      <label for="languageSelect">Select Language:</label>
+      <select id="languageSelect">
+        <!-- Language options will be added dynamically using JavaScript --></select
+      ><br />
+      <label for="pitchSlider">Adjust Pitch:</label>
+      <input
+        type="range"
+        id="pitchSlider"
+        min="0.5"
+        max="2"
+        step="0.1"
+        value="1"
+      /><br />
+      <button id="playBtn">Play</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="repeatBtn">Repeat</button>
+      <div id="wordBox"></div>
+      <!-- New element for displaying words -->
+    </div>
+
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=2eYlkhVr"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
