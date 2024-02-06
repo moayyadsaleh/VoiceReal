@@ -5,51 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VoiceReal: Text-to-Speech Reader</title>
     <link rel="stylesheet" href="styles.css" />
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        margin: 20px;
-        padding: 0;
-        background-color: #f5f5f5;
-      }
-
-      #ttsContainer {
-        max-width: 600px;
-        margin: auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        text-align: center;
-      }
-
-      #textArea {
-        width: 100%;
-        height: 100px;
-        margin-bottom: 10px;
-        padding: 10px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: none;
-      }
-
-      /* Add more styling as needed */
-
-      #playBtn,
-      #pauseBtn,
-      #repeatBtn {
-        background-color: #4caf50;
-        color: #fff;
-        padding: 10px 20px;
-        margin: 5px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body>
+    <div id="logos">
+      <img
+        src="https://live.staticflickr.com/65535/51262624119_07fb913283_z.jpg"
+        alt="Logo 1"
+        class="logo"
+      />
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTspVaOKZymKXFu17KygNZ19qwhkkKoskh0gCh-WGuT&s"
+        alt="Logo 2"
+        class="logo"
+      />
+    </div>
+
     <div id="ttsContainer">
       <p>
         Welcome to VoiceReal, your advanced Text-to-Speech Reader. Enter text
@@ -58,17 +28,6 @@
         written content into a natural, human-like voice, enhancing
         accessibility and convenience. Explore the power of words brought to
         life with VoiceReal.
-      </p>
-
-      <p>
-        VoiceReal is your go-to tool for honing language skills through
-        immersive listening experiences. Whether you're learning a new language,
-        improving your reading comprehension, or enhancing your listening
-        skills, VoiceReal provides a versatile platform. With support for
-        multiple languages, this app opens up a world of possibilities for
-        language learners. Customize your learning journey by adjusting the
-        pitch, exploring various languages, and repeating phrases to refine your
-        pronunciation. Elevate your language proficiency with VoiceReal.
       </p>
 
       <textarea id="textArea" placeholder="Enter text to be read..."></textarea
