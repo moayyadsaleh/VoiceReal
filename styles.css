@@ -29,8 +29,13 @@ body {
 p {
   line-height: 1.5;
   color: whitesmoke;
+  transition: color 0.3s ease; /* Adding transition for a smooth effect */
 }
 
+p:hover {
+  color: whitesmoke; /* Your brand color on hover */
+  background-color: #70002e;
+}
 textarea {
   box-sizing: border-box;
   width: 100%;
@@ -169,4 +174,9 @@ input[type="range"]:hover {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+#introVideo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
