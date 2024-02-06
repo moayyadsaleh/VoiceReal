@@ -90,7 +90,7 @@ languageSelect.value = languages[0].voices[0];
 
 // Initial text in the text area
 textArea.value =
-  "Hi. Hit play to test me! I am your friend! I can read any text for you to help you with your journey studying critical languages!";
+  "Hi! type or paste your text in this box. Select your target language, and hit play in order for me to read it for you.";
 
 // Event listeners for playback controls
 playBtn.addEventListener("click", () => {
