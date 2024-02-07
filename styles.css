@@ -40,15 +40,14 @@ textarea {
   box-sizing: border-box;
   width: 100%;
   max-width: calc(100% - 20px);
-  height: 100%;
-  max-height: 300px; /* Set a max-height to prevent it from growing indefinitely */
+  height: 200px; /* Set a specific height */
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #70002e;
   border-radius: 4px;
   transition: border-color 0.3s ease;
   resize: vertical; /* Allow vertical resizing if needed */
-  overflow-y: auto; /* Add a scrollbar when the content exceeds the max-height */
+  overflow-y: auto; /* Add a scrollbar when the content exceeds the height */
 }
 
 textarea:hover {

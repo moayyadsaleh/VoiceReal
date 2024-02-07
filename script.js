@@ -75,23 +75,52 @@ languages.forEach((language) => {
   languageSelect.appendChild(optionGroup);
 });
 
-// Set default language
-languageSelect.value = languages[0].voices[0];
+// Load selected language and voice from localStorage if available
+const savedLanguage = localStorage.getItem("savedLanguage");
+if (savedLanguage) {
+  languageSelect.value = savedLanguage;
+}
+
+// Event listener for language selection
+languageSelect.addEventListener("change", () => {
+  localStorage.setItem("savedLanguage", languageSelect.value);
+});
+
+// Load text from localStorage if available
+const savedText = localStorage.getItem("savedText");
+if (savedText) {
+  textArea.value = savedText;
+}
 
 // Event listener for the playback control
 playBtn.addEventListener("click", () => {
-  const selectedVoice = languageSelect.value;
-  const selectedPitch = parseFloat(pitchSlider.value);
+  try {
+    const selectedVoice = languageSelect.value;
+    const selectedPitch = parseFloat(pitchSlider.value);
 
-  isPlaying = true;
-  wordBox.textContent = textArea.value;
+    if (!selectedVoice) {
+      throw new Error("Please select a voice for speech synthesis.");
+    }
 
-  responsiveVoice.speak(textArea.value, selectedVoice, {
-    pitch: selectedPitch,
-    rate: selectedRate,
-    onstart: onPlayStart,
-    onend: onPlayEnd,
-  });
+    if (!isVoiceAvailable(selectedVoice, languages)) {
+      throw new Error(
+        "The selected voice is not available for the chosen language."
+      );
+    }
+
+    isPlaying = true;
+    wordBox.textContent = textArea.value;
+
+    responsiveVoice.speak(textArea.value, selectedVoice, {
+      pitch: selectedPitch,
+      rate: selectedRate,
+      onstart: onPlayStart,
+      onend: onPlayEnd,
+    });
+  } catch (error) {
+    alert("Error occurred during speech synthesis:\n" + error.message);
+    // Optionally, you can provide more user-friendly error messages or take appropriate actions.
+  }
 });
 
 // Event listener to detect when the user highlights text
@@ -125,6 +154,15 @@ function getSelectedText() {
   return text.length > 0 ? text : null;
 }
 
+// Helper function to check if a voice is available for the selected language
+function isVoiceAvailable(selectedVoice, languages) {
+  const selectedLanguage =
+    languageSelect.options[languageSelect.selectedIndex].parentNode.label;
+  const language = languages.find((lang) => lang.name === selectedLanguage);
+
+  return language && language.voices.includes(selectedVoice);
+}
+
 // Event listener for the pitch slider
 pitchSlider.addEventListener("input", () => {
   // Update pitch value display if needed
@@ -134,4 +172,10 @@ pitchSlider.addEventListener("input", () => {
 rateSlider.addEventListener("input", () => {
   selectedRate = parseFloat(rateSlider.value);
   // Update rate value display if needed
+});
+
+// Event listener for changes in the text area
+textArea.addEventListener("input", () => {
+  // Save the text to localStorage
+  localStorage.setItem("savedText", textArea.value);
 });
