@@ -2,14 +2,12 @@ const languageSelect = document.getElementById("languageSelect");
 const textArea = document.getElementById("textArea");
 const playBtn = document.getElementById("playBtn");
 const pauseBtn = document.getElementById("pauseBtn");
-const repeatBtn = document.getElementById("repeatBtn");
 const pitchSlider = document.getElementById("pitchSlider");
 const wordBox = document.getElementById("wordBox");
 
-let words = [];
-let currentWordIndex = 0;
 let isPlaying = false;
-let selectedRate = 1.1; // Default rate
+let selectedRate = 1; // Default rate
+
 // Predefined list of languages and voices
 const languages = [
   {
@@ -24,7 +22,6 @@ const languages = [
     name: "French",
     voices: ["French Female", "French Male"],
   },
-
   {
     name: "Russian",
     voices: ["Russian Female", "Russian Male"],
@@ -81,47 +78,23 @@ languages.forEach((language) => {
 // Set default language
 languageSelect.value = languages[0].voices[0];
 
-// Initial text in the text area
-textArea.value =
-  "Hi! Type or paste your text here. Select your target language below, and click 'Play' for me to read it aloud for you.";
-
-// Event listeners for playback controls
+// Event listener for the playback control
 playBtn.addEventListener("click", () => {
   const selectedVoice = languageSelect.value;
   const selectedPitch = parseFloat(pitchSlider.value);
 
-  words = textArea.value.split(/\s+/);
-  currentWordIndex = 0;
   isPlaying = true;
-
-  function displayNextWord() {
-    if (currentWordIndex < words.length) {
-      const currentWord = words[currentWordIndex];
-      wordBox.textContent = currentWord;
-
-      const wordDuration = (currentWord.length / selectedPitch) * 1500;
-      setTimeout(() => {
-        textArea.setSelectionRange(0, 0);
-        currentWordIndex++;
-        displayNextWord();
-      }, wordDuration);
-    } else {
-      wordBox.textContent = "";
-      isPlaying = false;
-    }
-  }
-
-  displayNextWord();
+  wordBox.textContent = textArea.value;
 
   responsiveVoice.speak(textArea.value, selectedVoice, {
     pitch: selectedPitch,
-    rate: selectedRate, // Add rate property
+    rate: selectedRate,
     onstart: onPlayStart,
     onend: onPlayEnd,
   });
 });
 
-// Add an event listener to detect when the user highlights text
+// Event listener to detect when the user highlights text
 textArea.addEventListener("mouseup", () => {
   const selectedText = getSelectedText();
   if (selectedText) {
@@ -131,52 +104,19 @@ textArea.addEventListener("mouseup", () => {
   }
 });
 
+// Event listener for the pause button
 pauseBtn.addEventListener("click", () => {
   responsiveVoice.pause();
 });
 
-repeatBtn.addEventListener("click", () => {
-  const selectedVoice = languageSelect.value;
-  const selectedPitch = parseFloat(pitchSlider.value);
-
-  words = textArea.value.split(/\s+/); // Split text into words
-  currentWordIndex = 0;
-  isPlaying = true;
-
-  function displayNextWord() {
-    if (currentWordIndex < words.length) {
-      const currentWord = words[currentWordIndex];
-      wordBox.textContent = currentWord;
-
-      // Adjust the interval based on the length of the current word and voice speed
-      const wordDuration = (currentWord.length / selectedPitch) * 1500; // Adjust the factor as needed
-      setTimeout(() => {
-        textArea.setSelectionRange(0, 0); // Reset selection after the word is displayed
-        currentWordIndex++;
-        displayNextWord(); // Continue to the next word
-      }, wordDuration);
-    } else {
-      wordBox.textContent = ""; // Reset the display when playback ends
-      isPlaying = false;
-    }
-  }
-
-  displayNextWord(); // Start displaying words
-
-  responsiveVoice.speak(textArea.value, selectedVoice, {
-    pitch: selectedPitch,
-    onstart: onPlayStart,
-    onend: onPlayEnd,
-  });
-});
-
+// Callback function for the start of playback
 function onPlayStart() {
-  wordBox.textContent = textArea.value; // Highlight the entire spoken text
+  // No need to do anything here for this modification
 }
 
-// Callback function for play end
+// Callback function for the end of playback
 function onPlayEnd() {
-  wordBox.textContent = ""; // Reset the display when playback ends
+  // No need to do anything here for this modification
 }
 
 // Helper function to get the currently highlighted text
@@ -185,15 +125,13 @@ function getSelectedText() {
   return text.length > 0 ? text : null;
 }
 
-// Event listener for pitch slider
+// Event listener for the pitch slider
 pitchSlider.addEventListener("input", () => {
   // Update pitch value display if needed
-  // const pitchValue = parseFloat(pitchSlider.value).toFixed(1);
-  // console.log("Pitch Value:", pitchValue);
 });
-// Event listener for rate slider
+
+// Event listener for the rate slider
 rateSlider.addEventListener("input", () => {
   selectedRate = parseFloat(rateSlider.value);
   // Update rate value display if needed
-  // console.log("Rate Value:", selectedRate);
 });
