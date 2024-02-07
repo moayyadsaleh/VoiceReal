@@ -14,25 +14,17 @@ let selectedRate = 1.1; // Default rate
 const languages = [
   {
     name: "English",
-    voices: [
-      "UK English Male",
-      "UK English Female",
-      "US English Male",
-      "US English Female",
-    ],
+    voices: ["UK English Male", "UK English Female", "US English Female"],
   },
   {
     name: "Spanish",
-    voices: ["Spanish Female", "Spanish Male"],
+    voices: ["Spanish Male"],
   },
   {
     name: "French",
     voices: ["French Female", "French Male"],
   },
-  {
-    name: "German",
-    voices: ["German Female", "German Male"],
-  },
+
   {
     name: "Russian",
     voices: ["Russian Female", "Russian Male"],
