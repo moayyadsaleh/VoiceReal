@@ -4,11 +4,12 @@ const playBtn = document.getElementById("playBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const repeatBtn = document.getElementById("repeatBtn");
 const pitchSlider = document.getElementById("pitchSlider");
-const wordBox = document.getElementById("wordBox"); // Add a new element for displaying words
+const wordBox = document.getElementById("wordBox");
 
 let words = [];
 let currentWordIndex = 0;
 let isPlaying = false;
+let selectedRate = 1.1; // Default rate
 // Predefined list of languages and voices
 const languages = [
   {
@@ -90,14 +91,14 @@ languageSelect.value = languages[0].voices[0];
 
 // Initial text in the text area
 textArea.value =
-  "Hi! type or paste your text in this box. Select your target language, and hit play in order for me to read it for you.";
+  "Hi! Type or paste your text here. Select your target language below, and click 'Play' for me to read it aloud for you.";
 
 // Event listeners for playback controls
 playBtn.addEventListener("click", () => {
   const selectedVoice = languageSelect.value;
   const selectedPitch = parseFloat(pitchSlider.value);
 
-  words = textArea.value.split(/\s+/); // Split text into words
+  words = textArea.value.split(/\s+/);
   currentWordIndex = 0;
   isPlaying = true;
 
@@ -106,23 +107,23 @@ playBtn.addEventListener("click", () => {
       const currentWord = words[currentWordIndex];
       wordBox.textContent = currentWord;
 
-      // Adjust the interval based on the length of the current word and voice speed
-      const wordDuration = (currentWord.length / selectedPitch) * 1500; // Adjust the factor as needed
+      const wordDuration = (currentWord.length / selectedPitch) * 1500;
       setTimeout(() => {
-        textArea.setSelectionRange(0, 0); // Reset selection after the word is displayed
+        textArea.setSelectionRange(0, 0);
         currentWordIndex++;
-        displayNextWord(); // Continue to the next word
+        displayNextWord();
       }, wordDuration);
     } else {
-      wordBox.textContent = ""; // Reset the display when playback ends
+      wordBox.textContent = "";
       isPlaying = false;
     }
   }
 
-  displayNextWord(); // Start displaying words
+  displayNextWord();
 
   responsiveVoice.speak(textArea.value, selectedVoice, {
     pitch: selectedPitch,
+    rate: selectedRate, // Add rate property
     onstart: onPlayStart,
     onend: onPlayEnd,
   });
@@ -197,4 +198,10 @@ pitchSlider.addEventListener("input", () => {
   // Update pitch value display if needed
   // const pitchValue = parseFloat(pitchSlider.value).toFixed(1);
   // console.log("Pitch Value:", pitchValue);
+});
+// Event listener for rate slider
+rateSlider.addEventListener("input", () => {
+  selectedRate = parseFloat(rateSlider.value);
+  // Update rate value display if needed
+  // console.log("Rate Value:", selectedRate);
 });

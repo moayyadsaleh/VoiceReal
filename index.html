@@ -29,10 +29,10 @@
 
       <p>
         Paste or type text into the provided textarea, select your target
-        language and pitch, then hit play. VoiceReal will seamlessly transform
-        your content into a natural, human-like voice to enhance your listening
-        and pronunciation skills whether you are an absolute beginner or at the
-        most advanced level.
+        language and pitch, adjust the rate using the slider, then hit play.
+        VoiceReal will seamlessly transform your content into a natural,
+        human-like voice to enhance your listening and pronunciation skills
+        whether you are an absolute beginner or at the most advanced level.
       </p>
 
       <textarea id="textArea" placeholder="Enter text to be read..."></textarea
@@ -49,6 +49,15 @@
         max="2"
         step="0.1"
         value="1"
+      /><br />
+      <label for="rateSlider">Adjust Speed:</label>
+      <input
+        type="range"
+        id="rateSlider"
+        min="0.5"
+        max="2.5"
+        step="0.1"
+        value="1.5"
       /><br />
       <button id="playBtn">Play</button>
       <button id="pauseBtn">Pause</button>

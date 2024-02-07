@@ -180,3 +180,53 @@ input[type="range"]:hover {
   height: auto;
   margin-bottom: 20px;
 }
+
+#rateSlider {
+  width: 96%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: linear-gradient(to right, #dcdcdc, #dcdcdc) no-repeat center/100%
+    2px; /* White Smoke color */
+  border-radius: 4px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+#rateSlider:hover,
+#pitchSlider:focus {
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px; /* Hover/Focus color */
+}
+
+#rateSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#rateSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#rateSlider::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
