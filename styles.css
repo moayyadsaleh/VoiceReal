@@ -126,7 +126,7 @@ input[type="range"]:hover {
 }
 
 #pitchSlider {
-  width: 96%;
+  width: 70%;
   margin-bottom: 10px;
   -webkit-appearance: none;
   appearance: none;
@@ -181,7 +181,7 @@ input[type="range"]:hover {
 }
 
 #rateSlider {
-  width: 96%;
+  width: 70%;
   margin-bottom: 10px;
   -webkit-appearance: none;
   appearance: none;
