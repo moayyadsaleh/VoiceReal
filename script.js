@@ -6,9 +6,8 @@ const pitchSlider = document.getElementById("pitchSlider");
 const wordBox = document.getElementById("wordBox");
 
 let isPlaying = false;
-let selectedRate = 1; // Default rate
+let selectedRate = 1;
 
-// Predefined list of languages and voices
 const languages = [
   {
     name: "English",
@@ -60,7 +59,6 @@ const languages = [
   },
 ];
 
-// Populate language options
 languages.forEach((language) => {
   const optionGroup = document.createElement("optgroup");
   optionGroup.label = language.name;
@@ -75,24 +73,20 @@ languages.forEach((language) => {
   languageSelect.appendChild(optionGroup);
 });
 
-// Load selected language and voice from localStorage if available
 const savedLanguage = localStorage.getItem("savedLanguage");
 if (savedLanguage) {
   languageSelect.value = savedLanguage;
 }
 
-// Event listener for language selection
 languageSelect.addEventListener("change", () => {
   localStorage.setItem("savedLanguage", languageSelect.value);
 });
 
-// Load text from localStorage if available
 const savedText = localStorage.getItem("savedText");
 if (savedText) {
   textArea.value = savedText;
 }
 
-// Event listener for the playback control
 playBtn.addEventListener("click", () => {
   try {
     const selectedVoice = languageSelect.value;
@@ -119,11 +113,9 @@ playBtn.addEventListener("click", () => {
     });
   } catch (error) {
     alert("Error occurred during speech synthesis:\n" + error.message);
-    // Optionally, you can provide more user-friendly error messages or take appropriate actions.
   }
 });
 
-// Event listener to detect when the user highlights text
 textArea.addEventListener("mouseup", () => {
   const selectedText = getSelectedText();
   if (selectedText) {
@@ -133,28 +125,21 @@ textArea.addEventListener("mouseup", () => {
   }
 });
 
-// Event listener for the pause button
 pauseBtn.addEventListener("click", () => {
   responsiveVoice.pause();
 });
 
-// Callback function for the start of playback
 function onPlayStart() {
   // No need to do anything here for this modification
 }
 
-// Callback function for the end of playback
-function onPlayEnd() {
-  // No need to do anything here for this modification
-}
+function onPlayEnd() {}
 
-// Helper function to get the currently highlighted text
 function getSelectedText() {
   const text = window.getSelection().toString().trim();
   return text.length > 0 ? text : null;
 }
 
-// Helper function to check if a voice is available for the selected language
 function isVoiceAvailable(selectedVoice, languages) {
   const selectedLanguage =
     languageSelect.options[languageSelect.selectedIndex].parentNode.label;
@@ -163,19 +148,12 @@ function isVoiceAvailable(selectedVoice, languages) {
   return language && language.voices.includes(selectedVoice);
 }
 
-// Event listener for the pitch slider
-pitchSlider.addEventListener("input", () => {
-  // Update pitch value display if needed
-});
+pitchSlider.addEventListener("input", () => {});
 
-// Event listener for the rate slider
 rateSlider.addEventListener("input", () => {
   selectedRate = parseFloat(rateSlider.value);
-  // Update rate value display if needed
 });
 
-// Event listener for changes in the text area
 textArea.addEventListener("input", () => {
-  // Save the text to localStorage
   localStorage.setItem("savedText", textArea.value);
 });

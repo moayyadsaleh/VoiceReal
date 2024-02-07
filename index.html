@@ -21,24 +21,22 @@
     </div>
 
     <div id="ttsContainer">
-      <!-- Video Element -->
       <video id="introVideo" controls>
         <source src="introductary video.mp4" type="video/mp4" />
       </video>
 
       <p>
-        Paste or type text into the text area, choose your target language, then
-        click play. VoiceReal transforms your content into a semi-natural,
-        semi-human-like voice to enhance your listening and pronunciation
-        skills. Highlight a word or sentence in the text area, and it will be
-        pronounced automatically.
+        Paste or type text into the text area below, choose your target
+        language, then click play. VoiceReal transforms your content into a
+        semi-natural, semi-human-like voice to enhance your listening and
+        pronunciation skills. Highlight a word or sentence in the text area, and
+        it will be pronounced automatically.
       </p>
 
       <textarea id="textArea" placeholder="Enter text to be read..."></textarea
       ><br />
       <label for="languageSelect">Select Language:</label>
-      <select id="languageSelect">
-        <!-- Language options will be added dynamically using JavaScript --></select
+      <select id="languageSelect"></select
       ><br />
       <label for="pitchSlider">Adjust Pitch:</label>
       <input
@@ -61,10 +59,17 @@
       <button id="playBtn">Play/repeat</button>
       <button id="pauseBtn">Pause</button>
       <div id="wordBox"></div>
-      <!-- New element for displaying words -->
     </div>
 
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=2eYlkhVr"></script>
     <script src="script.js"></script>
   </body>
+  <footer>
+    <p class="footer-text">
+      Programmatically integrated with
+      <a href="https://responsivevoice.com/" target="_blank"
+        >ResponsiveVoice API</a
+      >
+    </p>
+  </footer>
 </html>

@@ -29,25 +29,25 @@ body {
 p {
   line-height: 1.5;
   color: whitesmoke;
-  transition: color 0.3s ease; /* Adding transition for a smooth effect */
+  transition: color 0.3s ease;
 }
 
 p:hover {
-  color: whitesmoke; /* Your brand color on hover */
+  color: whitesmoke;
   background-color: #70002e;
 }
 textarea {
   box-sizing: border-box;
   width: 100%;
   max-width: calc(100% - 20px);
-  height: 200px; /* Set a specific height */
+  height: 200px;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #70002e;
   border-radius: 4px;
   transition: border-color 0.3s ease;
-  resize: vertical; /* Allow vertical resizing if needed */
-  overflow-y: auto; /* Add a scrollbar when the content exceeds the height */
+  resize: vertical;
+  overflow-y: auto;
 }
 
 textarea:hover {
@@ -98,19 +98,16 @@ button:hover {
   color: whitesmoke;
 }
 
-/* Pitch Line */
 input[type="range"] {
   background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
     2px;
 }
 
-/* Responsive Styling */
 @media only screen and (max-width: 600px) {
   #ttsContainer {
     padding: 10px;
   }
 }
-/* Pitch Line */
 input[type="range"] {
   width: 100%;
   padding: 8px;
@@ -132,7 +129,7 @@ input[type="range"]:hover {
   appearance: none;
   height: 5px;
   background: linear-gradient(to right, #dcdcdc, #dcdcdc) no-repeat center/100%
-    2px; /* White Smoke color */
+    2px;
   border-radius: 4px;
   outline: none;
   transition: background 0.3s ease;
@@ -141,7 +138,7 @@ input[type="range"]:hover {
 #pitchSlider:hover,
 #pitchSlider:focus {
   background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
-    2px; /* Hover/Focus color */
+    2px;
 }
 
 #pitchSlider::-webkit-slider-thumb {
@@ -187,7 +184,7 @@ input[type="range"]:hover {
   appearance: none;
   height: 5px;
   background: linear-gradient(to right, #dcdcdc, #dcdcdc) no-repeat center/100%
-    2px; /* White Smoke color */
+    2px;
   border-radius: 4px;
   outline: none;
   transition: background 0.3s ease;
@@ -196,7 +193,7 @@ input[type="range"]:hover {
 #rateSlider:hover,
 #pitchSlider:focus {
   background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
-    2px; /* Hover/Focus color */
+    2px;
 }
 
 #rateSlider::-webkit-slider-thumb {
@@ -228,4 +225,23 @@ input[type="range"]:hover {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+footer {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-text {
+  margin: 0;
+}
+
+.footer-text a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-weight: bold;
 }
