@@ -100,8 +100,7 @@ button:hover {
 }
 
 input[type="range"] {
-  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
-    2px;
+  background: linear-gradient(to right, green, green) no-repeat center/100% 2px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -136,8 +135,7 @@ input[type="range"]:hover {
 
 #pitchSlider:hover,
 #pitchSlider:focus {
-  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
-    2px;
+  background: linear-gradient(to right, green, green) no-repeat center/100% 2px;
 }
 
 #pitchSlider::-webkit-slider-thumb {
@@ -145,7 +143,7 @@ input[type="range"]:hover {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: #70002e;
+  background: gre;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -154,7 +152,7 @@ input[type="range"]:hover {
 #pitchSlider::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: #70002e;
+  background: green;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -164,7 +162,7 @@ input[type="range"]:hover {
 #pitchSlider::-ms-thumb {
   width: 16px;
   height: 16px;
-  background: #70002e;
+  background: green;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -191,8 +189,7 @@ input[type="range"]:hover {
 
 #rateSlider:hover,
 #pitchSlider:focus {
-  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
-    2px;
+  background: linear-gradient(to right, green, green) no-repeat center/100% 2px;
 }
 
 #rateSlider::-webkit-slider-thumb {
