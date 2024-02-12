@@ -34,7 +34,7 @@ p {
 
 p:hover {
   color: whitesmoke;
-  background-color: #70002e;
+  background-color: green;
 }
 textarea {
   box-sizing: border-box;
@@ -44,7 +44,7 @@ textarea {
   height: 200px;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #70002e;
+  border: 1px solid green;
   border-radius: 4px;
   transition: border-color 0.3s ease;
   resize: vertical;
@@ -52,7 +52,7 @@ textarea {
 }
 
 textarea:hover {
-  border-color: #70002e;
+  border-color: blue;
 }
 
 label {
@@ -87,7 +87,7 @@ button {
 }
 
 button:hover {
-  background-color: #f9423a;
+  background-color: blue;
 }
 
 #wordBox {
@@ -95,7 +95,7 @@ button:hover {
   padding: 10px;
   border: 1px solid whitesmoke;
   border-radius: 4px;
-  background-color: #70002e;
+  background-color: blue;
   color: whitesmoke;
 }
 
@@ -114,13 +114,11 @@ input[type="range"] {
   padding: 8px;
   margin-bottom: 10px;
   border: none;
-  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
-    2px;
+  background: linear-gradient(to right, green, blue) no-repeat center/100% 2px;
 }
 
 input[type="range"]:hover {
-  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
-    2px;
+  background: linear-gradient(to right, green, blue) no-repeat center/100% 2px;
 }
 
 #pitchSlider {
