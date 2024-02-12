@@ -66,19 +66,19 @@ input[type="range"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid #70002e;
+  border: 1px solid green;
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }
 
 select:hover,
 input[type="range"]:hover {
-  border-color: #70002e;
+  border-color: green;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #70002e;
+  background-color: green;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -197,7 +197,7 @@ input[type="range"]:hover {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: #70002e;
+  background: green;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -206,7 +206,7 @@ input[type="range"]:hover {
 #rateSlider::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: #70002e;
+  background: green;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -216,7 +216,7 @@ input[type="range"]:hover {
 #rateSlider::-ms-thumb {
   width: 16px;
   height: 16px;
-  background: #70002e;
+  background: green;
   border: none;
   border-radius: 50%;
   cursor: pointer;
