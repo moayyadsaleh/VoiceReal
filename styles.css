@@ -34,7 +34,7 @@ p {
 
 p:hover {
   color: whitesmoke;
-  background-color: green;
+  background-color: #70002e;
 }
 textarea {
   box-sizing: border-box;
@@ -44,7 +44,7 @@ textarea {
   height: 200px;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid green;
+  border: 1px solid #70002e;
   border-radius: 4px;
   transition: border-color 0.3s ease;
   resize: vertical;
@@ -52,7 +52,7 @@ textarea {
 }
 
 textarea:hover {
-  border-color: blue;
+  border-color: #70002e;
 }
 
 label {
@@ -66,19 +66,19 @@ input[type="range"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid green;
+  border: 1px solid #70002e;
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }
 
 select:hover,
 input[type="range"]:hover {
-  border-color: green;
+  border-color: #70002e;
 }
 
 button {
   padding: 10px 20px;
-  background-color: green;
+  background-color: #70002e;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -87,7 +87,7 @@ button {
 }
 
 button:hover {
-  background-color: blue;
+  background-color: #f9423a;
 }
 
 #wordBox {
@@ -95,12 +95,13 @@ button:hover {
   padding: 10px;
   border: 1px solid whitesmoke;
   border-radius: 4px;
-  background-color: blue;
+  background-color: #70002e;
   color: whitesmoke;
 }
 
 input[type="range"] {
-  background: linear-gradient(to right, green, green) no-repeat center/100% 2px;
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -113,11 +114,13 @@ input[type="range"] {
   padding: 8px;
   margin-bottom: 10px;
   border: none;
-  background: linear-gradient(to right, green, blue) no-repeat center/100% 2px;
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
 }
 
 input[type="range"]:hover {
-  background: linear-gradient(to right, green, blue) no-repeat center/100% 2px;
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
 }
 
 #pitchSlider {
@@ -135,7 +138,8 @@ input[type="range"]:hover {
 
 #pitchSlider:hover,
 #pitchSlider:focus {
-  background: linear-gradient(to right, green, green) no-repeat center/100% 2px;
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
 }
 
 #pitchSlider::-webkit-slider-thumb {
@@ -143,7 +147,7 @@ input[type="range"]:hover {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: gre;
+  background: #70002e;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -152,7 +156,7 @@ input[type="range"]:hover {
 #pitchSlider::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: green;
+  background: #70002e;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -162,7 +166,7 @@ input[type="range"]:hover {
 #pitchSlider::-ms-thumb {
   width: 16px;
   height: 16px;
-  background: green;
+  background: #70002e;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -189,7 +193,8 @@ input[type="range"]:hover {
 
 #rateSlider:hover,
 #pitchSlider:focus {
-  background: linear-gradient(to right, green, green) no-repeat center/100% 2px;
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
 }
 
 #rateSlider::-webkit-slider-thumb {
@@ -197,7 +202,7 @@ input[type="range"]:hover {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: green;
+  background: #70002e;
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -206,7 +211,7 @@ input[type="range"]:hover {
 #rateSlider::-moz-range-thumb {
   width: 16px;
   height: 16px;
-  background: green;
+  background: #70002e;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -216,7 +221,7 @@ input[type="range"]:hover {
 #rateSlider::-ms-thumb {
   width: 16px;
   height: 16px;
-  background: green;
+  background: #70002e;
   border: none;
   border-radius: 50%;
   cursor: pointer;
