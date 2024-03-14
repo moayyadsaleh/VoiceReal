@@ -7,8 +7,24 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>This App for Non Commercial Use</h1>
+    <div id="logos">
+      <img
+        src="https://live.staticflickr.com/65535/51262624119_07fb913283_z.jpg"
+        alt="Logo 1"
+        class="logo"
+      />
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTspVaOKZymKXFu17KygNZ19qwhkkKoskh0gCh-WGuT&s"
+        alt="Logo 2"
+        class="logo"
+      />
+    </div>
+
     <div id="ttsContainer">
+      <video id="introVideo" controls>
+        <source src="introductary video.mp4" type="video/mp4" />
+      </video>
+
       <p>
         Paste or type text into the text area below, choose your target
         language, then click play. VoiceReal will read your text in a
@@ -52,7 +68,7 @@
     <p class="footer-text">
       VoiceReal programmatically integrates with
       <a href="https://responsivevoice.com/" target="_blank"
-        >ResponsiveVoice API: https://responsivevoice.com/</a
+        >ResponsiveVoice API</a
       >
     </p>
   </footer>
