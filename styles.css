@@ -1,159 +1,248 @@
-const languageSelect = document.getElementById("languageSelect");
-const textArea = document.getElementById("textArea");
-const playBtn = document.getElementById("playBtn");
-const pauseBtn = document.getElementById("pauseBtn");
-const pitchSlider = document.getElementById("pitchSlider");
-const wordBox = document.getElementById("wordBox");
-
-let isPlaying = false;
-let selectedRate = 1;
-
-const languages = [
-  {
-    name: "English",
-    voices: ["UK English Male", "UK English Female", "US English Female"],
-  },
-  {
-    name: "Spanish",
-    voices: ["Spanish Male"],
-  },
-  {
-    name: "French",
-    voices: ["French Female", "French Male"],
-  },
-  {
-    name: "Russian",
-    voices: ["Russian Female", "Russian Male"],
-  },
-  {
-    name: "Korean",
-    voices: ["Korean Female", "Korean Male"],
-  },
-  {
-    name: "Chinese",
-    voices: ["Chinese Female", "Chinese Male"],
-  },
-  {
-    name: "Arabic",
-    voices: ["Arabic Female", "Arabic Male"],
-  },
-  {
-    name: "Indonesian",
-    voices: ["Indonesian Female", "Indonesian Male"],
-  },
-  {
-    name: "Portuguese",
-    voices: ["Portuguese Female", "Portuguese Male"],
-  },
-  {
-    name: "Spanish Latin American",
-    voices: ["Spanish Latin American Female", "Spanish Latin American Male"],
-  },
-  {
-    name: "Swahili",
-    voices: ["Swahili Male"],
-  },
-  {
-    name: "Thai",
-    voices: ["Thai Female"],
-  },
-];
-
-languages.forEach((language) => {
-  const optionGroup = document.createElement("optgroup");
-  optionGroup.label = language.name;
-
-  language.voices.forEach((voice) => {
-    const option = document.createElement("option");
-    option.value = voice;
-    option.textContent = voice;
-    optionGroup.appendChild(option);
-  });
-
-  languageSelect.appendChild(optionGroup);
-});
-
-const savedLanguage = localStorage.getItem("savedLanguage");
-if (savedLanguage) {
-  languageSelect.value = savedLanguage;
+body {
+  font-family: serif, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
-languageSelect.addEventListener("change", () => {
-  localStorage.setItem("savedLanguage", languageSelect.value);
-});
-
-const savedText = localStorage.getItem("savedText");
-if (savedText) {
-  textArea.value = savedText;
+#ttsContainer {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+#logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0;
 }
 
-playBtn.addEventListener("click", () => {
-  try {
-    const selectedVoice = languageSelect.value;
-    const selectedPitch = parseFloat(pitchSlider.value);
+.logo {
+  max-width: 150px;
+  height: auto;
+}
 
-    if (!selectedVoice) {
-      throw new Error("Please select a voice for speech synthesis.");
-    }
+p {
+  line-height: 1.5;
+  color: whitesmoke;
+  transition: color 0.3s ease;
+}
 
-    if (!isVoiceAvailable(selectedVoice, languages)) {
-      throw new Error(
-        "The selected voice is not available for the chosen language."
-      );
-    }
+p:hover {
+  color: whitesmoke;
+  background-color: #70002e;
+}
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 18px;
+  max-width: calc(100% - 20px);
+  height: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #70002e;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+  overflow-y: auto;
+}
 
-    isPlaying = true;
-    wordBox.textContent = textArea.value;
+textarea:hover {
+  border-color: #70002e;
+}
 
-    responsiveVoice.speak(textArea.value, selectedVoice, {
-      pitch: selectedPitch,
-      rate: selectedRate,
-      onstart: onPlayStart,
-      onend: onPlayEnd,
-    });
-  } catch (error) {
-    alert("Error occurred during speech synthesis:\n" + error.message);
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: whitesmoke;
+}
+
+select,
+input[type="range"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #70002e;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+select:hover,
+input[type="range"]:hover {
+  border-color: #70002e;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #70002e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #f9423a;
+}
+
+#wordBox {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+  background-color: #70002e;
+  color: whitesmoke;
+}
+
+input[type="range"] {
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
+}
+
+@media only screen and (max-width: 600px) {
+  #ttsContainer {
+    padding: 10px;
   }
-});
-
-textArea.addEventListener("mouseup", () => {
-  const selectedText = getSelectedText();
-  if (selectedText) {
-    responsiveVoice.speak(selectedText, languageSelect.value, {
-      pitch: parseFloat(pitchSlider.value),
-    });
-  }
-});
-
-pauseBtn.addEventListener("click", () => {
-  responsiveVoice.pause();
-});
-
-function onPlayStart() {
-  // No need to do anything here for this modification
+}
+input[type="range"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
 }
 
-function onPlayEnd() {}
-
-function getSelectedText() {
-  const text = window.getSelection().toString().trim();
-  return text.length > 0 ? text : null;
+input[type="range"]:hover {
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
 }
 
-function isVoiceAvailable(selectedVoice, languages) {
-  const selectedLanguage =
-    languageSelect.options[languageSelect.selectedIndex].parentNode.label;
-  const language = languages.find((lang) => lang.name === selectedLanguage);
-
-  return language && language.voices.includes(selectedVoice);
+#pitchSlider {
+  width: 70%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: linear-gradient(to right, #dcdcdc, #dcdcdc) no-repeat center/100%
+    2px;
+  border-radius: 4px;
+  outline: none;
+  transition: background 0.3s ease;
 }
 
-pitchSlider.addEventListener("input", () => {});
+#pitchSlider:hover,
+#pitchSlider:focus {
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
+}
 
-rateSlider.addEventListener("input", () => {
-  selectedRate = parseFloat(rateSlider.value);
-});
+#pitchSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
 
-textArea.addEventListener("input", () => {
-  localStorage.setItem("savedText", textArea.value);
-});
+#pitchSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#pitchSlider::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+#introVideo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+#rateSlider {
+  width: 70%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: linear-gradient(to right, #dcdcdc, #dcdcdc) no-repeat center/100%
+    2px;
+  border-radius: 4px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+#rateSlider:hover,
+#pitchSlider:focus {
+  background: linear-gradient(to right, #70002e, #70002e) no-repeat center/100%
+    2px;
+}
+
+#rateSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#rateSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#rateSlider::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  background: #70002e;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+footer {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-text {
+  margin: 0;
+}
+
+.footer-text a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-weight: bold;
+}
